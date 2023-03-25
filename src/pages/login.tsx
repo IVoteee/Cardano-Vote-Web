@@ -26,7 +26,7 @@ const login = () => {
                 <div className='pb-6 text-center'>
                   <a href="" className='text-sm text-blue-600 hover:blue-700 hover:underline mb-6'>Quên mật khẩu?</a>
                 </div>
-                <button type='submit' className='bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200'>Đăng nhập</button>
+                <button type='submit' className='h-12 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200'>Đăng nhập</button>
               </form>
             </section>
         </div>

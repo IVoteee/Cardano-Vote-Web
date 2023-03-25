@@ -43,9 +43,9 @@ const login = () => {
                         <option value="Female">Nữ</option>
                     </select>
                 </div>
-                <div className='col-span-1'>
-                    <label htmlFor="countries" className="block text-gray-700 text-sm font-bold mb-2">Ngày sinh</label>
-                    <div className='bg-gray-300'>
+                <div className='rounded col-span-1'>
+                    <label htmlFor="DOB" className="block text-gray-700 text-sm font-bold mb-2">Ngày sinh</label>
+                    <div className=''>
                         <Datepicker
                             inputClassName="bg-gray-300 pt-3 dark:bg-gray-300 w-full text-gray-900 dark:text-gray-900 rounded border-b-4 border-gray-300 dark:border-gray-300 focus:outline-none focus:border-blue-600 transition duration-500"
                             toggleClassName="rounded-r-lg bg-opacity-40 bg-gray-300 text-gray-900 dark:text-gray-900 hover:bg-blue-800 hover:bg-opacity-60 transition-all duration-150 ease-in-out" 
@@ -65,7 +65,7 @@ const login = () => {
                   <label htmlFor="password" className='block text-gray-700 text-sm font-bold mb-2 ml-3'>Mật khẩu</label>
                   <input type="password" id='password' className='bg-gray-300 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-blue-600 transition duration-500 px-3 pb-3' />
                 </div>
-                <button type='submit' className='bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200 col-span-2'>Đăng ký</button>
+                <button type='submit' className='bg-blue-600 hover:bg-blue-700 h-12 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200 col-span-2'>Đăng ký</button>
               </form>
             </section>
         </div>
