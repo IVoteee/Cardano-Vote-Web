@@ -13,28 +13,40 @@ model User {
   updatedAt     DateTime        @updatedAt
   firstName     String
   lastName      String
-  phoneNumber   String
+  phoneNumber   String?
   email         String
   password      String
-  description   String
-  image         String
+  description   String?
+  image         String?
   role          Role            @default(USER)
   address       String?
   addressWallet String?
   groups        UsersOnGroups[]
+  electionCommission UsersOnElectionCommissions[]
 }
 
 model Group {
-  id                 String              @id() @default(uuid())
-  createdAt          DateTime            @default(now())
-  updatedAt          DateTime            @updatedAt
-  name               String
-  description        String
-  image              String?
-  phoneNumber        String?
-  address            String?
-  user               UsersOnGroups[]
+  id          String          @id() @default(uuid())
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+  name        String
+  description String
+  image       String?
+  phoneNumber String?
+  address     String?
+  user        UsersOnGroups[]
+
   electionCommission ElectionCommission?
+
+}
+
+model ElectionCommission {
+  id        String   @id() @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  groupId   String @unique()
+  group     Group @relation(fields: [groupId], references: [id])
+  user UsersOnElectionCommissions[]
 }
 
 model UsersOnGroups {
@@ -48,13 +60,33 @@ model UsersOnGroups {
   @@id([userId, groupId])
 }
 
-model ElectionCommission {
+model UsersOnElectionCommissions {
+  userId String
+  electionCommissionId String
+  user User @relation(fields: [userId], references: [id])
+  electionCommission ElectionCommission  @relation(fields: [electionCommissionId], references: [id])
+  assignedAt DateTime @default(now())
+  assignedBy String
+  @@id([userId, electionCommissionId])
+}
+
+model Ballot {
   id        String   @id() @default(uuid())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  groupId   String   @unique()
-  group     Group    @relation(fields: [groupId], references: [id])
+  startTime DateTime
+  endTime DateTime
 }
+
+model Candidate {
+  id        String   @id() @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+
+
+
 
 enum Role {
   USER
