@@ -5,7 +5,7 @@ class UserController {
     async getAllUsers(request, response) {
         try {
         } catch (error) {
-            response.status(200).json({
+            response.status(500).json({
                 message: error,
             });
         }
@@ -13,14 +13,37 @@ class UserController {
     async getUserById(request, response) {
         try {
         } catch (error) {
-            response.status(200).json({
+            response.status(500).json({
                 message: error,
             });
         }
     }
 
     async createUser() {
-        
+        try {
+        } catch (error) {
+            response.status(500).json({
+                message: error,
+            });
+        }
+    }
+
+    async updateUser(request, response) {
+        try {
+        } catch (error) {
+            response.status(500).json({
+                message: error,
+            });
+        }
+    }
+
+    async deleteUser(request, response) {
+        try {
+        } catch (error) {
+            response.status(500).json({
+                message: error,
+            });
+        }
     }
 }
 
