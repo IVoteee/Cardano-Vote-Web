@@ -1,9 +1,9 @@
 import prisma from "../models/index.model";
 
-class GroupController {
+class ElectionCommissionController {
     constructor() {}
 
-    async getAllGroup(request, response) {
+    async getAllElectionCommissions(request, response) {
         try {
         } catch (error) {
             response.status(500).json({
@@ -12,7 +12,7 @@ class GroupController {
         }
     }
 
-    async getGroupById(request, response) {
+    async getElectionCommissionById(request, response) {
         try {
         } catch (error) {
             response.status(500).json({
@@ -21,7 +21,7 @@ class GroupController {
         }
     }
 
-    async createGroup() {
+    async createElectionCommission(request, response) {
         try {
         } catch (error) {
             response.status(500).json({
@@ -30,7 +30,7 @@ class GroupController {
         }
     }
 
-    async updateGroupById(request, response) {
+    async updateElectionCommission(request, response) {
         try {
         } catch (error) {
             response.status(500).json({
@@ -39,7 +39,7 @@ class GroupController {
         }
     }
 
-    async deleteGroupById(request, response) {
+    async deleteElectionCommissionById(request, response) {
         try {
         } catch (error) {
             response.status(500).json({
@@ -49,4 +49,4 @@ class GroupController {
     }
 }
 
-export default new GroupController();
+export default new ElectionCommissionController();

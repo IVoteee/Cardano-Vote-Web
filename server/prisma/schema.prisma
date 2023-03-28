@@ -8,45 +8,46 @@ datasource db {
 }
 
 model User {
-  id            String          @id() @default(uuid())
-  createdAt     DateTime        @default(now())
-  updatedAt     DateTime        @updatedAt
-  firstName     String
-  lastName      String
-  phoneNumber   String?
-  email         String
-  password      String
-  description   String?
-  image         String?
-  role          Role            @default(USER)
-  address       String?
-  addressWallet String?
-  groups        UsersOnGroups[]
+  id                 String                       @id() @default(uuid())
+  createdAt          DateTime                     @default(now())
+  updatedAt          DateTime                     @updatedAt
+  firstName          String
+  lastName           String
+  phoneNumber        String?
+  email              String
+  password           String
+  description        String?
+  image              String?
+  role               Role                         @default(USER)
+  address            String?
+  addressWallet      String?
+  groups             UsersOnGroups[]
   electionCommission UsersOnElectionCommissions[]
+  group              Group?
 }
 
 model Group {
-  id          String          @id() @default(uuid())
-  createdAt   DateTime        @default(now())
-  updatedAt   DateTime        @updatedAt
-  name        String
-  description String
-  image       String?
-  phoneNumber String?
-  address     String?
-  user        UsersOnGroups[]
-
+  id                 String              @id() @default(uuid())
+  createdAt          DateTime            @default(now())
+  updatedAt          DateTime            @updatedAt
+  name               String
+  admin              String              @unique()
+  userAdmin          User                @relation(fields: [admin], references: [id])
+  description        String?
+  image              String?
+  phoneNumber        String?
+  address            String?
+  user               UsersOnGroups[]
   electionCommission ElectionCommission?
-
 }
 
 model ElectionCommission {
-  id        String   @id() @default(uuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  groupId   String @unique()
-  group     Group @relation(fields: [groupId], references: [id])
-  user UsersOnElectionCommissions[]
+  id        String                       @id() @default(uuid())
+  createdAt DateTime                     @default(now())
+  updatedAt DateTime                     @updatedAt
+  groupId   String                       @unique()
+  group     Group                        @relation(fields: [groupId], references: [id])
+  user      UsersOnElectionCommissions[]
 }
 
 model UsersOnGroups {
@@ -61,12 +62,13 @@ model UsersOnGroups {
 }
 
 model UsersOnElectionCommissions {
-  userId String
+  userId               String
   electionCommissionId String
-  user User @relation(fields: [userId], references: [id])
-  electionCommission ElectionCommission  @relation(fields: [electionCommissionId], references: [id])
-  assignedAt DateTime @default(now())
-  assignedBy String
+  user                 User               @relation(fields: [userId], references: [id])
+  electionCommission   ElectionCommission @relation(fields: [electionCommissionId], references: [id])
+  assignedAt           DateTime           @default(now())
+  assignedBy           String
+
   @@id([userId, electionCommissionId])
 }
 
@@ -75,7 +77,7 @@ model Ballot {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   startTime DateTime
-  endTime DateTime
+  endTime   DateTime
 }
 
 model Candidate {
@@ -83,10 +85,6 @@ model Candidate {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
-
-
-
-
 
 enum Role {
   USER
