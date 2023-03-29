@@ -51,14 +51,13 @@
 
 .hero {
   width: 100%;
-  left: 50%;
   display: flex;
   align-items: center;
   justify-content: center
 }
 
 .container-vote {
-  width: 450px;
+  width: 700px;
   padding: 25px 40px 25px 25px;
   border: 2px solid #555555;
   border-radius: 15px;
@@ -73,14 +72,21 @@
 }
 
 .label-vote {
-  position: relative;
+  position:relative;
   width: 50px;
   height: 50px;
 }
 
+.yes {
+  right: 0;
+}
+.no {
+  right: 0;
+}
+
 .input-vote {
-  width: 100%;
-  height: 100%;
+  width: 75%;
+  height: 75%;
   position: absolute;
 }
 
@@ -114,7 +120,7 @@ input:checked ~ span::after {
   opacity: 1;
 }
 
-#divide
+/* .divide
 {
   Position: absolute;
   Left: 0;
@@ -123,4 +129,4 @@ input:checked ~ span::after {
   Top: 0;
   text-align: center;
   line-height: 50px;
-}
+} */

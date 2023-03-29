@@ -1,33 +1,31 @@
 import Sidebar from '@/components/Sidebar'
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Script from 'next/script';
 import { candidates } from '@/script/voteScript'
 
 const vote = () => {
+    const initialState = { checkedIds: [] }
     const [checkedState, setCheckedState] = useState(
         new Array(candidates.length).fill(false)
     );
 
     const [total, setTotal] = useState(0);
-
-    const handleOnChange = (position) => {
-
-        let limit = 3;
-
+        
+    const handleOnChange = (position, e) => {
+        if (checkedState.filter((i) => i).length >= 3 && e.target.checked) return;
         const updatedCheckedState = checkedState.map((item, index) =>
-        index === position ? !item : item
+            index === position ? !item : item
         );
 
         setCheckedState(updatedCheckedState);
 
         const totalVote = updatedCheckedState.reduce(
             (sum, currentState, index) => {
-                sum = 0;
             if (currentState === true) {
                 sum++;
             }
-            if (sum == limit) {
-                currentState = false;
+            if(sum >= limit && currentState === true) {
+                sum = limit
             }
             return sum;
             },
@@ -50,13 +48,19 @@ const vote = () => {
                         <div className="container-vote">
                             <form action="">
                                 <ul className='vote-list'>
-                                    {candidates.map(({ name }, index) => {
+                                    {candidates.map(({ name, id }, index, e) => {
                                         return (
                                             <li key={index}>
-                                                <div className="row-vote">
+                                                <div className="row-vote flex">
                                                     <p>{name}</p>
-                                                    <label className='label-vote' htmlFor="">
-                                                        <input className='input-vote check' type="checkbox" checked={checkedState[index]} onChange={() => handleOnChange(index)} />
+                                                    <label className='label-vote yes flex items-center' htmlFor="">
+                                                        <input 
+                                                            className='input-vote check' 
+                                                            type="checkbox" 
+                                                            value={name}
+                                                            checked={checkedState[index]} 
+                                                            onChange={() => handleOnChange(index, e)} 
+                                                        />
                                                     </label>
                                                 </div>
                                             </li>
@@ -64,8 +68,10 @@ const vote = () => {
                                     })}
                                 </ul>
                             </form>
+                            <p>{total}</p>
                         </div>
                     </div>
+                    <button type='submit' className='h-12 w-36 mt-10 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200'>Bỏ phiếu</button>
                 </div>
             </div>
         </div>
