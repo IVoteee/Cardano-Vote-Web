@@ -4,28 +4,26 @@ import Script from 'next/script';
 import { candidates } from '@/script/voteScript'
 
 const vote = () => {
+    
     const initialState = { checkedIds: [] }
     const [checkedState, setCheckedState] = useState(
         new Array(candidates.length).fill(false)
     );
 
     const [total, setTotal] = useState(0);
+    const [limit, setLimit] = useState(3)
         
-    const handleOnChange = (position, e) => {
-        if (checkedState.filter((i) => i).length >= 3 && e.target.checked) return;
+    const handleOnChange = (position) => {
+        if (checkedState.filter((i) => i).length >= limit) checkedState.fill(false);
         const updatedCheckedState = checkedState.map((item, index) =>
             index === position ? !item : item
         );
-
         setCheckedState(updatedCheckedState);
 
         const totalVote = updatedCheckedState.reduce(
             (sum, currentState, index) => {
             if (currentState === true) {
                 sum++;
-            }
-            if(sum >= limit && currentState === true) {
-                sum = limit
             }
             return sum;
             },
@@ -48,7 +46,7 @@ const vote = () => {
                         <div className="container-vote">
                             <form action="">
                                 <ul className='vote-list'>
-                                    {candidates.map(({ name, id }, index, e) => {
+                                    {candidates.map(({ name }, index, e) => {
                                         return (
                                             <li key={index}>
                                                 <div className="row-vote flex">
@@ -68,7 +66,7 @@ const vote = () => {
                                     })}
                                 </ul>
                             </form>
-                            <p>{total}</p>
+                            <p className='text-red-500'>Phiếu này chỉ cho phép tối đa {limit} người được bầu*</p>
                         </div>
                     </div>
                     <button type='submit' className='h-12 w-36 mt-10 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200'>Bỏ phiếu</button>

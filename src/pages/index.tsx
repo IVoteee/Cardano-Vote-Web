@@ -17,8 +17,14 @@ export default function Home() {
               <li key="uniqueId1"><a href="/createCandidate">/createCandidate</a></li>
               <li key="uniqueId3"><a href="/vote">/vote</a></li>
               <li key="uniqueId2"><a href="/">/</a></li>
+              
               <li key="uniqueId1"><a href="/login">/login</a></li>
               <li key="uniqueId3"><a href="/register">/register</a></li>
+
+              <li key="uniqueId3"><a href="/createGroup">/createGroup</a></li>
+              <li key="uniqueId3"><a href="/createGroup">/updateGroup</a></li>
+              
+              <li key="uniqueId3"><a href="/createGroup">/profile</a></li>
             </ul>
           </div>
       </div>

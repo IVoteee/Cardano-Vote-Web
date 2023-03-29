@@ -30,6 +30,14 @@
 /*Login*/
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
 
+.tab-indicator > * {
+  @apply pb-1 border-b-4 border-transparent text-lg font-medium text-gray-500
+}
+
+.tab-indicator .active {
+  @apply text-blue-600 border-blue-600
+}
+
 .body-bg{
   background: rgb(7, 162, 198);
   background: radial-gradient(
