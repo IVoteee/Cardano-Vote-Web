@@ -24,7 +24,7 @@ export default function Home() {
               <li key="uniqueId3"><a href="/createGroup">/createGroup</a></li>
               <li key="uniqueId3"><a href="/createGroup">/updateGroup</a></li>
               
-              <li key="uniqueId3"><a href="/createGroup">/profile</a></li>
+              <li key="uniqueId3"><a href="/profile">/profile</a></li>
               <li key="uniqueId3"><a href="/groupPage">/groupPage</a></li>
             </ul>
           </div>
