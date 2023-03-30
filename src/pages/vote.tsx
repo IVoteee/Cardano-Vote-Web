@@ -42,7 +42,7 @@ const vote = () => {
                             Vote for "Name here"
                         </header>
                     </div>
-                    <div className="hero">
+                    <div className="hero bg-white rounded-lg shadow-lg">
                         <div className="container-vote">
                             <form action="">
                                 <ul className='vote-list'>
