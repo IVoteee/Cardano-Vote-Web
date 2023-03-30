@@ -19,7 +19,7 @@ function groupPage() {
         <div className="p-7">
         {/* Main content */}
         <div className="container w-full px-6 py-4">
-            <div className="flex-1">
+            <div className="flex">
             {/* Left column */}
             <div className="w-1/3 pr-6">
                 <div className="bg-white rounded-lg shadow-lg mb-6">
