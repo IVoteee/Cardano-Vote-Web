@@ -30,7 +30,10 @@ const createGroup = () => {
                                 <option value="percentageHighest">Riêng tư</option>
                             </select>
                         </div>
-                        <div className='col-span-1'></div>
+                        <div className='ml-5'>
+                            <label htmlFor="fileSelect" className='block text-gray-700 text-sm font-bold mb-2 col-span-4'>Nhập file thành viên</label>
+                            <input type="file" id="fileSelect" className='text-lg col-span-2' accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" />
+                        </div>
                         <div className='mb-2 rounded col-span-4'>
                             <label htmlFor="Description" className='block text-gray-700 text-sm font-bold mb-2 col-span-4'>Mô tả</label>
                             <textarea id='Description' className='bg-gray-300 h-64 py-3 text-base rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-blue-600 transition duration-500 px-3 pb-3' />
