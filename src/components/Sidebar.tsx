@@ -7,23 +7,23 @@ const Sidebar = () => {
     const [open, setOpen] = useState(true);
     const [submenuOpen, setSubmenuOpen] = useState(true);
     const Menus = [
-        { title: "Dashboard" },
-        { title: "Pages" , icon: <AiOutlineFileText/> },
-        { title: "Media", spacing: true, icon: <BsFillImageFill/> },
+        { title: "Trang chủ", link: "/allPages" },
+        { title: "Phiếu bầu của bạn", link: "/allBallots" , icon: <AiOutlineFileText/> },
+        { title: "Trang cá nhân", link: "/profile",spacing: true, icon: <BsPerson/> },
         {
-            title: "Projects", icon: <BsReverseLayoutTextSidebarReverse/>,
+            title: "Nhóm của bạn", icon: <BsReverseLayoutTextSidebarReverse/>,
             submenu: true,
             submenuItems: [
-                { title: "Submenu 1" },
-                { title: "Submenu 2" },
-                { title: "Submenu 3" }
+                { title: "Nhóm trường đại học Giao thông Vận tải", link:"/groupPage" },
+                { title: "Nhóm các thầy cô trường THPT Kim Liên", link:"/groupPage" },
+                { title: "Hội sinh viên K62 ĐH GTVT", link:"/groupPage" }
             ],
         },
-        { title: "Analytics", icon: <AiOutlineBarChart/> },
-        { title: "Inbox", icon: <AiOutlineMail/> },
-        { title: "Profile", spacing: true, icon: <BsPerson/> },
-        { title: "Setting", icon: <AiOutlineSetting/> },
-        { title: "Logout", icon: <AiOutlineLogout/> },
+        { title: "Thống kê", link:"/groupPage", icon: <AiOutlineBarChart/> },
+        { title: "Inbox", link:"/groupPage" , icon: <AiOutlineMail/> },
+        { title: "Profile", link:"/profile", spacing: true, icon: <BsPerson/> },
+        { title: "Cài đặt" , link:"/settings", icon: <AiOutlineSetting/> },
+        { title: "Đăng xuất", link:"/logout", icon: <AiOutlineLogout/> },
     ];
   return (
         <div className={`custom-sticky bg-blue-500 h-screen p-5 pt-8 ${open ? "w-72" : "w-20"} duration-300 relative`}>
@@ -44,7 +44,7 @@ const Sidebar = () => {
                             <span className='text-2xl block float-left'>
                                 {menu.icon ? menu.icon : <RiDashboardFill/>}
                             </span>
-                            <span className={`text-base font-medium flex-1 duration-200 ${!open && "hidden"}`}>{menu.title}</span>
+                            <span className={`text-base font-medium flex-1 duration-200 ${!open && "hidden"}`}> <a href={`${menu.link}`}>{menu.title}</a></span>
                             {menu.submenu && open && (
                                 <BsChevronDown className={`${submenuOpen && "rotate-180"}`} onClick={() => setSubmenuOpen(!submenuOpen)}/>
                             )}
@@ -54,7 +54,7 @@ const Sidebar = () => {
                             <ul>
                                 {menu.submenuItems.map((submenuItem, index) => (
                                     <li key={index} className="text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md">
-                                        {submenuItem.title}
+                                        <a href={`${submenuItem.link}`}>{submenuItem.title}</a>
                                     </li>
                                 ))}
                             </ul>

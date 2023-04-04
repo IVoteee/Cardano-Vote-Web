@@ -1,6 +1,5 @@
 import Sidebar from '@/components/Sidebar'
 import React, {useEffect, useState} from 'react';
-import Script from 'next/script';
 import { candidates } from '@/script/voteScript'
 
 const vote = () => {
